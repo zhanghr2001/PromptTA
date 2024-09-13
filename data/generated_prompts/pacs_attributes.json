@@ -1,0 +1,72 @@
+{
+    "dog": [
+        "four-legged mammal",
+        "variety of coat colors and patterns",
+        "snout with a wet nose",
+        "floppy or erect ears",
+        "tail that may be long or short",
+        "sharp teeth",
+        "claws on paws",
+        "different breeds have distinct physical characteristics such as size, shape, and fur texture"
+    ],
+    "elephant": [
+        "large size",
+        "long trunk",
+        "tusks (in some species)",
+        "large ears",
+        "wrinkled skin",
+        "thick, sturdy legs",
+        "typically grey in color",
+        "distinctive shape of the head and body"
+    ],
+    "giraffe": [
+        "long neck",
+        "distinct spotted coat pattern",
+        "long legs",
+        "ossicones (horn-like structures) on top of the head",
+        "large, dark eyes",
+        "tufted tail",
+        "tall stature compared to other animals in the photo",
+        "unique shape and silhouette"
+    ],
+    "guitar": [
+        "a wooden body with a distinctive shape",
+        "a long neck with frets and strings",
+        "a headstock with tuning pegs",
+        "a sound hole (for acoustic guitars)",
+        "pickups and knobs (for electric guitars)",
+        "a bridge and saddle",
+        "a pickguard",
+        "various hardware such as tuning machines, strap buttons, and input jacks"
+    ],
+    "horse": [
+        "large size",
+        "long mane and tail",
+        "hooves",
+        "muscular build",
+        "distinctive head shape with long face and prominent eyes",
+        "typically brown, black, white, or grey in color",
+        "often seen with a saddle or bridle in photos",
+        "may have markings such as a blaze or socks on their legs"
+    ],
+    "house": [
+        "rectangular or square shape",
+        "windows and doors",
+        "roof",
+        "chimney",
+        "walls made of brick, wood, or other materials",
+        "landscaping or yard around the house",
+        "garage or driveway",
+        "architectural details such as columns, shutters, or balconies"
+    ],
+    "person": [
+        "two arms and two legs",
+        "upright posture",
+        "varied skin tones",
+        "hair on head",
+        "facial features such as eyes, nose, and mouth",
+        "clothing and accessories",
+        "varying heights and body shapes",
+        "gestures and body language"
+    ]
+}
