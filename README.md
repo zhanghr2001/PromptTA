@@ -6,7 +6,7 @@
 
 Authors: Haoran Zhang*, [Shuanghao Bai*](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
 
-*equal contribution*
+*\*equal contribution*
 
 ## Highlights
 
