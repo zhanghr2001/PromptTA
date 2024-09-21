@@ -27,31 +27,14 @@ elif [ "$DATASET" = "domainnet" ]; then
   
 fi
 
-
-for DOMAIN in "${ALL_DOMAIN[@]}"
-do
-  for SEED in ${SEEDS[@]}
-  do
-    DIR=output_tsne/${TRAINER}/${DATASET}/${CFG}/${BACKBONE//\//}/${DOMAIN}/seed_${SEED}
-
-    if [ -d "$DIR" ]; then
-      echo "Results are available in ${DIR}, so skip this job"
-    else
-      echo "Run this job and save the output to ${DIR}"
       
-      python t-sne.py \
-        --backbone ${BACKBONE} \
-        --target-domains ${DOMAIN} \
-        --root ${DATA} \
-        --trainer ${TRAINER} \
-        --dataset-config-file configs/datasets/${DATASET}.yaml \
-        --config-file configs/trainers/${TRAINER}/${CFG}.yaml \
-        --output-dir ${DIR} \
-        --seed ${SEED} \
-        --gpu ${GPU} \
-        --eval-only \
-        --no-train
-
-    fi
-  done
-done
+python train.py \
+  --backbone ${BACKBONE} \
+  --target-domains ${ALL_DOMAIN[0]} \
+  --root ${DATA} \
+  --trainer ${TRAINER} \
+  --dataset-config-file configs/datasets/${DATASET}.yaml \
+  --config-file configs/trainers/${TRAINER}/${CFG}.yaml \
+  --output-dir output_tsne \
+  --gpu ${GPU} \
+  --tSNE

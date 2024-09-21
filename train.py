@@ -132,7 +132,7 @@ def extend_cfg(cfg):
         cfg.TRAINER.PROMPT_TA.N_CTX = 1           # number of text context vectors
         cfg.TRAINER.PROMPT_TA.CSC = False         # class-specific context
         cfg.TRAINER.PROMPT_TA.K_PROPMT = 80
-        cfg.TRAINER.PROMPT_TA.CTX_INIT = 'A S style of a'   # "This is a"       # initialization words
+        cfg.TRAINER.PROMPT_TA.CTX_INIT = 'A S style of a'   # initialization words
         cfg.TRAINER.PROMPT_TA.CLASS_TOKEN_POSITION = "end"  # 'middle' or 'end' or 'front'
     else:
         raise NotImplementedError
@@ -181,6 +181,11 @@ def main(args):
         trainer.load_model(args.model_dir, epoch=args.epoch)
         trainer.test()
         return
+    
+    if args.tSNE:
+        trainer.load_model(args.model_dir, epoch=args.epoch)
+        trainer.test_tsne()
+        return
 
     if not args.no_train:
         trainer.train()
@@ -201,7 +206,7 @@ if __name__ == "__main__":
     
     parser.add_argument("--transforms", type=str, nargs="+", help="data augmentation methods")
     
-    parser.add_argument("--trainer", type=str, default="SPG_CGAN", help="name of trainer")
+    parser.add_argument("--trainer", type=str, default="PROMPT_TA", help="name of trainer")
     parser.add_argument("--backbone", type=str, default="", help="name of CNN backbone")
     parser.add_argument("--head", type=str, default="", help="name of head")
     
@@ -213,6 +218,8 @@ if __name__ == "__main__":
     parser.add_argument("--gpu", type=str, default="0", help="which gpu to use")
     parser.add_argument("--save", type=str, default=False, help="need to save model")
     parser.add_argument("opts", default=None, nargs=argparse.REMAINDER, help="modify config options using the command-line")
+
+    parser.add_argument("--tSNE", action="store_true", help="t-SNE visualization")
 
     args = parser.parse_args()
     

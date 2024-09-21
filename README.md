@@ -63,6 +63,15 @@ python setup.py develop
 cd ..
 ```
 
+* Install CLIP library.
+```bash
+# Dependencies, may have been installed in former steps
+pip install ftfy regex tqdm
+
+# Install CLIP library from git
+pip install git+https://github.com/openai/CLIP.git
+```
+
 * Clone PromptTA code repository and install requirements.
 ```bash
 # Clone PromptTA code base

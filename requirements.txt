@@ -2,13 +2,12 @@ absl-py==1.4.0
 beautifulsoup4==4.12.2
 brotlipy==0.7.0
 cachetools==5.3.0
-certifi @ file:///croot/certifi_1671487769961/work/certifi
-cffi @ file:///croot/cffi_1670423208954/work
-charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
-clip @ git+https://github.com/openai/CLIP.git@a9b1bf5920416aaeaec965c25dd9e8f98c864f16
-cryptography @ file:///croot/cryptography_1677533068310/work
+# certifi==2022.12.7
+cffi==1.15.1
+charset-normalizer==2.0.4
+cryptography==39.0.1
 cycler==0.11.0
-dassl @ file:///opt/data/private/code/DAPrompt/Dassl.pytorch
+# dassl==0.6.3
 einops==0.6.1
 entrypoints==0.3
 filelock==3.12.0
@@ -21,7 +20,7 @@ google-auth==2.17.3
 google-auth-oauthlib==0.4.6
 grad-cam==1.4.8
 grpcio==1.54.0
-idna @ file:///croot/idna_1666125576474/work
+idna==3.4
 importlib-metadata==6.6.0
 isort==4.3.21
 joblib==1.2.0
@@ -32,9 +31,9 @@ MarkupSafe==2.1.2
 matplotlib==3.5.3
 mccabe==0.6.1
 mkl-fft==1.3.1
-mkl-random @ file:///tmp/build/80754af9/mkl_random_1626179032232/work
+mkl-random==1.2.2
 mkl-service==2.4.0
-numpy @ file:///opt/conda/conda-bld/numpy_and_numpy_base_1653915516269/work
+numpy==1.21.5
 nvidia-ml-py==11.525.112
 nvitop==1.1.2
 oauthlib==3.2.2
@@ -50,21 +49,22 @@ psutil==5.9.5
 pyasn1==0.5.0
 pyasn1-modules==0.3.0
 pycodestyle==2.5.0
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pycparser==2.21
 pyflakes==2.1.1
-pyOpenSSL @ file:///croot/pyopenssl_1677607685877/work
+pyOpenSSL==23.0.0
 pyparsing==3.1.0
-PySocks @ file:///tmp/build/80754af9/pysocks_1594394576006/work
+PySocks==1.7.1
 python-dateutil==2.8.2
 pytz==2023.3
 PyYAML==6.0
 regex==2023.5.5
-requests @ file:///opt/conda/conda-bld/requests_1657734628632/work
+requests==2.28.1
 requests-oauthlib==1.3.1
 rsa==4.9
 scikit-learn==1.0.2
 scipy==1.7.3
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+# setuptools==65.6.3
+six==1.16.0
 soupsieve==2.4.1
 tabulate==0.9.0
 tb-nightly==2.12.0a20230113
@@ -72,16 +72,17 @@ tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 termcolor==2.3.0
 threadpoolctl==3.1.0
-torch==1.12.0
-torchaudio==0.12.0
+# torch==1.12.0
+# torchaudio==0.12.0
 torchcam==0.3.2
-torchvision==0.13.0
+# torchvision==0.13.0
 tqdm==4.65.0
 ttach==0.0.3
-typing_extensions @ file:///tmp/abs_ben9emwtky/croots/recipe/typing_extensions_1659638822008/work
-urllib3 @ file:///croot/urllib3_1673575502006/work
+typing_extensions==4.3.0
+urllib3==1.26.14
 wcwidth==0.2.6
 Werkzeug==2.2.3
+# wheel==0.38.4
 wilds==1.2.2
 yacs==0.1.8
 yapf==0.29.0

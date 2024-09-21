@@ -660,10 +660,6 @@ class PROMPT_TA(Base_SFDG):
         new_text_features = []
         new_labels = []
         for cls in range(self.n_cls):
-            # 均匀
-            # epsilon = torch.rand(self.cfg.TRAINER.PROMPT_TA.K_PROPMT, self.cfg.FEAT_DIM).to(self.device)
-            # epsilon = (epsilon - 0.5) * 2
-            # 正太
             epsilon = torch.randn(self.cfg.TRAINER.PROMPT_TA.K_PROPMT, self.cfg.FEAT_DIM).to(self.device)
             new_features = means[cls] + stds[cls] * epsilon
             new_text_features.append(new_features)

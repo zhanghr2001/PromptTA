@@ -116,7 +116,7 @@ class CustomCLIP(Base_CustomCLIP):
         self.logit_scale = clip_model.logit_scale
         self.dtype = clip_model.dtype
 
-    def forward(self, image):   # inference
+    def image_forward(self, image):   # inference
         image_features = self.image_encoder(image.type(self.dtype))
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
         output = image_features
@@ -162,7 +162,7 @@ class CustomCLIP(Base_CustomCLIP):
 
         return L_style, L_content
 
-    def train_fc(self, input, tokenized_input):
+    def text_forward(self, input, tokenized_input):
         text_features = self.text_encoder(input, tokenized_input)
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
         output = text_features
@@ -356,11 +356,11 @@ class PROMPT_STYLER(Base_SFDG):
             features = []
             with torch.no_grad():
                 for i in range(seg):
-                    features.append(self.model.train_fc(prompts_segs[i].to(self.device), tokenized_prompts_segs[i].to(self.device)))
+                    features.append(self.model.text_forward(prompts_segs[i].to(self.device), tokenized_prompts_segs[i].to(self.device)))
                 text_features = torch.cat(features, dim = 0)
         else:
             with torch.no_grad():
-                text_features = self.model.train_fc(prompts.to(self.device), tokenized_prompts.to(self.device))          
+                text_features = self.model.text_forward(prompts.to(self.device), tokenized_prompts.to(self.device))          
 
         dataset = TensorDataset(text_features, labels)
         self.train_loader = DataLoader(dataset, batch_size=self.cfg.DATALOADER.TRAIN_X.BATCH_SIZE, shuffle=True)
@@ -496,7 +496,7 @@ class PROMPT_STYLER(Base_SFDG):
             print(f"Evaluate on the *val* set")
             for batch_idx, batch in enumerate(data_loader):
                 input, tokenized_input, label = self.parse_batch_train(batch)
-                output = self.model.train_fc(input, tokenized_input)
+                output = self.model.text_forward(input, tokenized_input)
                 if self.ce:
                     output = self.model.classifier(output)
                 else:
@@ -508,7 +508,7 @@ class PROMPT_STYLER(Base_SFDG):
             print(f"Evaluate on the *test* set")
             for batch_idx, batch in enumerate(data_loader):
                 input, label = self.parse_batch_test(batch)
-                output = self.model(input)
+                output = self.model.image_forward(input)
                 output = self.model.classifier(output)
 
                 # sim = output @ self.text_features.T
