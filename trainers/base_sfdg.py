@@ -124,7 +124,7 @@ class Base_CustomCLIP(nn.Module):
     
 
 @TRAINER_REGISTRY.register()
-class Base_SFDG(TrainerX):      # all functions here will be override
+class Base_SFDG(TrainerX):      # all functions here will be override in prompt_ta
     def check_cfg(self, cfg):
         pass
 

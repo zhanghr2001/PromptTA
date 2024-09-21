@@ -1,4 +1,4 @@
-# PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization [ICASSP 2025]
+# PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization [ICASSP 2025 under review]
 
 
 <!-- [arXiv](https://arxiv.org/abs/2312.09553v2) -->
@@ -30,24 +30,9 @@ Extensive experiments conducted on four benchmark datasets demonstrate that Prom
 </details>
 
 
-<!-- ## Results
-### PDA in comparison with existing prompt tuning methods
-Results reported below show accuracy across 3 UDA datasets with ViT-B/16 backbone. Our PDA method adopts the paradigm of multi-modal prompt tuning.
-
-| Method                                                    | Office-Home Acc. | Office-31 Acc. |  VisDA-2017 Acc.  | 
-|-----------------------------------------------------------|:---------:|:----------:|:---------:|
-| [CLIP](https://arxiv.org/abs/2103.00020)                  |   82.1   |   77.5    |   88.9   | 
-| [CoOp](https://arxiv.org/abs/2109.01134)                  |   83.9   |   89.4    |   82.7   |
-| [CoCoOp](https://arxiv.org/abs/2203.05557)                |   84.1   |   88.9    |   84.2   | 
-| [VP](https://arxiv.org/abs/2203.17274)                    |   81.7   |   77.4    |   88.7   | 
-| [VPT-deep](https://arxiv.org/abs/2203.12119)              |   83.9   |   89.4    |   86.2   | 
-| [MaPLe](https://arxiv.org/abs/2210.03117)                 |   84.2   |   89.6    |   83.5   |
-| [DAPL](https://arxiv.org/abs/2202.06687)                  |   84.4   |   81.2    |   89.5   |
-| [PDA](https://arxiv.org/abs/2312.09553) (Ours)            |   **85.7**   |   **91.2**    | **89.7** |  -->
-
 ## Installation 
 For installation and other package requirements, please follow the instructions as follows. 
-This codebase is tested on Ubuntu 18.04 LTS with python 3.7. Follow the below steps to create environment and install dependencies.
+This codebase is tested on Ubuntu 20.04 LTS with python 3.7. Follow the below steps to create environment and install dependencies.
 
 * Setup conda environment.
 ```bash
@@ -88,38 +73,25 @@ cd PromptTA
 pip install -r requirements.txt
 ```
 
-<!-- ## Data Preparation
-Please follow the instructions to prepare all datasets.
+## Data Preparation
+Download datasets and modify dataset path in .sh files to your path.
 Datasets list:
-- [Office-Home](https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view?pli=1&resourcekey=0-2SNWq0CDAuWOBRRBL7ZZsw)
-- [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/#datasets_code)
-- [VisDA-2017](http://ai.bu.edu/visda-2017/#download) -->
+- [PACS](https://drive.google.com/uc?id=1m4X4fROCCXMO0lRLrr6Zz9Vb3974NWhE)
+- [VLCS](http://www.mediafire.com/file/7yv132lgn1v267r/vlcs.tar.gz/file)
+- [OfficeHome](https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view?pli=1&resourcekey=0-2SNWq0CDAuWOBRRBL7ZZsw)
+- [DomainNet](http://ai.bu.edu/DomainNet/)
 
 
 ## Training and Evaluation
 Please follow the instructions for training, evaluating, and reproducing the results.
-Firstly, you need to **modify the directory of datasets by yourself**.
 
 ```bash
 # Example: train and evaluate on PACS dataset, with backbone ResNet-50 and GPU 0
 bash scripts/prompt_ta/main_ta_all.sh pacs b128_ep50_pacs RN50 0
 ```
 
-The details are in each method folder in [scripts folder](scripts/).  
+The details are in each method folder in [scripts folder](scripts/).
 
-<!-- 
-## Supported Methods
-Supported methods in this codespace are as follows:
-
-| Method                    |                   Paper                        |                             Code                                     |               Script                           |
-|---------------------------|:----------------------------------------------:|:--------------------------------------------------------------------:|:----------------------------------------------:|
-| CoOp                      | [IJCV 2022](https://arxiv.org/abs/2109.01134)  |  [link](https://github.com/KaiyangZhou/CoOp)                         |  [link](scripts/coop)                          |
-| CoCoOp                    | [CVPR 2022](https://arxiv.org/abs/2203.05557)  |  [link](https://github.com/KaiyangZhou/CoOp)                         |  [link](scripts/cocoop)                        |
-| VP                        | [-](https://arxiv.org/abs/2203.17274)          |  [link](https://github.com/hjbahng/visual_prompting)                 |  -                                             |
-| VPT                       | [ECCV 2022](https://arxiv.org/abs/2203.12119)  |  [link](https://github.com/KMnP/vpt)                                 |  [link](scripts/vpt)                           |
-| IVLP & MaPLe              | [CVPR 2023](https://arxiv.org/abs/2210.03117)  |  [link](https://github.com/muzairkhattak/multimodal-prompt-learning) |  [link](scripts/ivlp) & [link](scripts/maple)  |
-| DAPL                      | [TNNLS 2023](https://arxiv.org/abs/2202.06687) |  [link](https://github.com/LeapLabTHU/DAPrompt)                      |  [link](scripts/dapl)                          |
- -->
 
 <!-- ## Citation
 If our code is helpful to your research or projects, please consider citing:
@@ -138,5 +110,5 @@ If our code is helpful to your research or projects, please consider citing:
 
 ## Acknowledgements
 
-Our style of reademe refers to [MaPLe](https://github.com/muzairkhattak/multimodal-prompt-learning). 
-And our code is based on [CoOp and CoCoOp](https://github.com/KaiyangZhou/CoOp), [DAPL](https://github.com/LeapLabTHU/DAPrompt/tree/main) and [MaPLe](https://github.com/muzairkhattak/multimodal-prompt-learning) etc. repository. We thank the authors for releasing their codes. If you use their codes, please consider citing these works as well.
+Our style of readme refers to [PDA](https://github.com/BaiShuanghao/Prompt-based-Distribution-Alignment). 
+And our code is based on [CoOp](https://github.com/KaiyangZhou/CoOp) and [PromptStyler](https://arxiv.org/abs/2307.15199). We thank the authors for their great work.

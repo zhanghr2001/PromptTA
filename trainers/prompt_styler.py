@@ -260,7 +260,7 @@ class PROMPT_STYLER(Base_SFDG):
         if not os.path.exists(data_path):
             data = self.style_generation(data_path)
         else:
-            data = torch.load(data_path)
+            data = torch.load(data_path, map_location=self.device)
 
         return data
         
@@ -343,25 +343,24 @@ class PROMPT_STYLER(Base_SFDG):
         return data
 
     def train_fc(self, data):
-        prompts = data['prompts'] #27600
+        prompts = data['prompts']
         tokenized_prompts = data['tokenized_prompts']
         labels = data['labels']
-
-        # print(prompts.shape)
-        # print(tokenized_prompts.shape)
         
-        # segment to prevent cuda oom
+        # segment to prevent cuda OOM on domainnet
+        if "DomainNet" in self.cfg.DATASET.NAME:
+            seg=5
+            prompts_segs = torch.chunk(prompts, seg, dim=0)
+            tokenized_prompts_segs = torch.chunk(tokenized_prompts, seg, dim=0)
 
-        seg=5
-        prompts_segs = torch.chunk(prompts, seg, dim=0)
-        tokenized_prompts_segs = torch.chunk(tokenized_prompts, seg, dim=0)
-
-        features = []
-
-        with torch.no_grad():
-            for i in range(seg):
-                features.append(self.model.train_fc(prompts_segs[i].to(self.device), tokenized_prompts_segs[i].to(self.device)))
-            text_features = torch.cat(features, dim = 0)
+            features = []
+            with torch.no_grad():
+                for i in range(seg):
+                    features.append(self.model.train_fc(prompts_segs[i].to(self.device), tokenized_prompts_segs[i].to(self.device)))
+                text_features = torch.cat(features, dim = 0)
+        else:
+            with torch.no_grad():
+                text_features = self.model.train_fc(prompts.to(self.device), tokenized_prompts.to(self.device))          
 
         dataset = TensorDataset(text_features, labels)
         self.train_loader = DataLoader(dataset, batch_size=self.cfg.DATALOADER.TRAIN_X.BATCH_SIZE, shuffle=True)

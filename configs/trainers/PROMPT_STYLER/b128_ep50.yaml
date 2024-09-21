@@ -37,8 +37,3 @@ TRAIN:
 
 TEST:
   DO_TEST: True
-
-MODEL:
-  BACKBONE:
-    NAME: "RN50"
-

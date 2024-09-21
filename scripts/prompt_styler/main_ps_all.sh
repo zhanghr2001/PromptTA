@@ -35,9 +35,10 @@ elif [ "$DATASET" = "domainnet" ]; then
 fi
 
 
-for SEED in ${SEEDS[@]}
+
+for DOMAIN in "${ALL_DOMAIN[@]}"
 do
-  for DOMAIN in "${ALL_DOMAIN[@]}"
+  for SEED in ${SEEDS[@]}
   do
     DIR=output/${TRAINER}/${DATASET}/${CFG}/${BACKBONE//\//}/${DOMAIN}/seed_${SEED}
 
@@ -46,7 +47,6 @@ do
     else
       echo "Run this job and save the output to ${DIR}"
 
-      DIR=output/${TRAINER}/${DATASET}/${CFG}/${BACKBONE//\//}/${DOMAIN}/seed_${SEED}
       python train.py \
         --backbone ${BACKBONE} \
         --target-domains ${DOMAIN} \
