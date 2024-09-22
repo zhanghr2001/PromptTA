@@ -1,4 +1,3 @@
-import json
 import os.path as osp
 from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 
@@ -33,41 +32,54 @@ class MY_DomainNet(DatasetBase):
 
         self.check_input_domains(cfg.DATASET.SOURCE_DOMAINS, cfg.DATASET.TARGET_DOMAINS)
 
-        train, val, test = self._read_data(cfg.SOURCE_DOMAINS, cfg.TARGET_DOMAIN)
+        train = self._read_data(cfg.DATASET.SOURCE_DOMAINS, "train")
+        val = self._read_data(cfg.DATASET.SOURCE_DOMAINS, "test")
+        test = self._read_data(cfg.DATASET.TARGET_DOMAINS, "all")
 
         super().__init__(train_x=train, val=val, test=test)
 
-    def _read_data(self, source_domains, target_domain):
-        train, val, test = [], [], []
+    def _read_data(self, input_domains, split):
+        items = []
 
-        for domain, dname in enumerate(source_domains):
-            split_path = osp.join(self.split_dir, dname + "_train_val_split.json")
-            split_train, split_val = self._read_split(self.root, split_path)
-            
-            train.extend(split_train)
-            val.extend(split_val)
+        for domain, dname in enumerate(input_domains):
+            if split == "all":
+                file_train = osp.join(
+                    self.split_dir, dname + "_train.txt"
+                )
+                impath_label_list = self._read_split_domainnet(file_train)
+                file_val = osp.join(
+                    self.split_dir, dname + "_test.txt"
+                )
+                impath_label_list += self._read_split_domainnet(file_val)
+            else:
+                file = osp.join(
+                    self.split_dir, dname + "_" + split + ".txt"
+                )
+                impath_label_list = self._read_split_domainnet(file)
 
-        split_path = osp.join(self.split_dir, target_domain + "_train_val_split.json")
-        split_train, split_val = self._read_split(self.root, split_path)
+            for impath, label in impath_label_list:
+                classname = impath.split("/")[-2]
+                item = Datum(
+                    impath=impath,
+                    label=label,
+                    domain=domain,
+                    classname=classname
+                )
+                items.append(item)
 
-        test.extend(split_train)
-        test.extend(split_val)
-
-        return train, val, test
+        return items
     
-    def _read_split(self, root_path, split_path):
-        def _convert(items):
-            out = []
-            for impath, label, domain, classname in items:
-                impath = osp.join(root_path, impath)
-                item = Datum(impath=impath, label=int(label), domain=domain, classname=classname)
-                out.append(item)
-                
-            return out
-        
-        with open(split_path, "r") as f:
-            split = json.load(f)
-        train = _convert(split["train"])
-        val = _convert(split["val"])
-        
-        return train, val
+    def _read_split_domainnet(self, split_file):
+        impath_label_list = []
+
+        with open(split_file, "r") as f:
+            lines = f.readlines()
+
+            for line in lines:
+                line = line.strip()
+                impath, label = line.split(" ")
+                impath = osp.join(self.image_dir, impath)
+                label = int(label)  # start from 0
+                impath_label_list.append((impath, label))
+
+        return impath_label_list

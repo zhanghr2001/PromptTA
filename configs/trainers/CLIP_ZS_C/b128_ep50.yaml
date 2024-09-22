@@ -18,17 +18,9 @@ OPTIM:
   MOMENTUM: 0.9
   MAX_EPOCH: 100
   LR_SCHEDULER: "cosine"
-  # WARMUP_EPOCH: 0
-  # WARMUP_TYPE: "constant"
-  # WARMUP_CONS_LR: 1e-5
 
 TRAIN:
   PRINT_FREQ: 10
 
 TEST:
   DO_TEST: True
-
-MODEL:
-  BACKBONE:
-    NAME: "RN50"
-

@@ -17,7 +17,7 @@ class MY_PACS(DatasetBase):
         ICCV 2017.
     """
 
-    dataset_dir = "PACS"
+    dataset_dir = "pacs"
     domains = ["art_painting", "cartoon", "photo", "sketch"]
     data_url = "https://drive.google.com/uc?id=1m4X4fROCCXMO0lRLrr6Zz9Vb3974NWhE"
     # the following images contain errors and should be ignored
@@ -75,7 +75,7 @@ class MY_PACS(DatasetBase):
         return items
 
     def _read_split_pacs(self, split_file):
-        items = []
+        impath_label_list = []
 
         with open(split_file, "r") as f:
             lines = f.readlines()
@@ -86,7 +86,7 @@ class MY_PACS(DatasetBase):
                 if impath in self._error_paths:
                     continue
                 impath = osp.join(self.image_dir, impath)
-                label = int(label) - 1
-                items.append((impath, label))
+                label = int(label) - 1  # start from 1
+                impath_label_list.append((impath, label))
 
-        return items
+        return impath_label_list

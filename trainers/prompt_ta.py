@@ -571,5 +571,3 @@ class PROMPT_TA(Base_SFDG):
 
         return results['accuracy']
 
-    def get_current_lr(self, optim):
-        return optim.param_groups[0]["lr"]

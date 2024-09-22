@@ -1,6 +1,6 @@
 #!/bin/bash
 
-conda activate prompt_ta
+source activate prompt_ta
 
 DATA=/opt/data/private/OOD_data # your directory of dataset
 TRAINER=PROMPT_STYLER

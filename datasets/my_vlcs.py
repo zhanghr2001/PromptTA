@@ -44,7 +44,7 @@ class MY_VLCS(DatasetBase):
 
         for domain, dname in enumerate(input_domains):
             dname = dname.upper()
-            path = osp.join(self.dataset_dir, 'images', dname, split)
+            path = osp.join(self.dataset_dir, dname, split)
             folders = listdir_nohidden(path)
             folders.sort()
 

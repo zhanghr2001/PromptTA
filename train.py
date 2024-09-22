@@ -84,7 +84,6 @@ def reset_cfg(cfg, args):
         else:
             raise ValueError
         
-        cfg.ALL_DOMAINS = list(DOMAINS.keys())
         cfg.TARGET_DOMAIN = args.target_domains[0]
         cfg.DATASET.TARGET_DOMAINS = [DOMAINS[cfg.TARGET_DOMAIN]]
         DOMAINS.pop(cfg.TARGET_DOMAIN)

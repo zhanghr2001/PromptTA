@@ -1,4 +1,4 @@
-# PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization [ICASSP 2025 under review]
+# PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization
 
 
 <!-- [arXiv](https://arxiv.org/abs/2312.09553v2) -->
@@ -6,6 +6,9 @@
 
 Authors: Haoran Zhang, [Shuanghao Bai](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
 
+
+This repo contains implementation of several soure-free domain generalization methods: zero-shot CLIP, [PromptStyler](https://arxiv.org/abs/2307.15199), PromptTA (Ours)
+Supported datasets: PACS, VLCS, OfficeHome, DomainNet
 
 ## Highlights
 
@@ -82,16 +85,31 @@ pip install -r requirements.txt
 ```
 
 ## Data Preparation
-Download datasets and modify dataset path in .sh files to your path.
-Datasets list:
-- [PACS](https://drive.google.com/uc?id=1m4X4fROCCXMO0lRLrr6Zz9Vb3974NWhE)
-- [VLCS](http://www.mediafire.com/file/7yv132lgn1v267r/vlcs.tar.gz/file)
-- [OfficeHome](https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view?pli=1&resourcekey=0-2SNWq0CDAuWOBRRBL7ZZsw)
-- [DomainNet](http://ai.bu.edu/DomainNet/)
-
+Download datasets:
+- [PACS](https://drive.google.com/file/d/1m4X4fROCCXMO0lRLrr6Zz9Vb3974NWhE/view)
+- [VLCS](https://drive.google.com/file/d/1r0WL5DDqKfSPp9E3tRENwHaXNs1olLZd/view)
+- [OfficeHome](https://drive.google.com/file/d/1gkbf_KaxoBws-GWT3XIPZ7BnkqbAxIFa/view)
+- [DomainNet (VisDA 2019)](http://ai.bu.edu/DomainNet/)
+ 
+For PACS, VLCS and OfficeHome, unzip with the original folder name (pacs, VLCS, office_home_dg). For DomainNet, download  folder as follows or you can modify the configuration in [datasets](datasets/) to fit your own file structure.
+```
+root
+├─domainnet
+│  ├─images
+│  │  ├─clipart
+│  │  └─infograph
+│  └─splits
+│     ├─clipart_train.txt
+│     ├─clipart_test.txt
+│     ├─infograph_train.txt
+│     └─infograph_test.txt
+├─office_home_dg
+├─pacs
+└─VLCS
+```
 
 ## Training and Evaluation
-Train and evaluate by running [scripts](scripts/), folder names represent methods.
+Scripts for training and evaluation are in [scripts folder](scripts/). Modify *DATA* to your dataset directory before running.
 
 ```bash
 # Example: train and evaluate on PACS dataset, with backbone ResNet-50 and GPU 0

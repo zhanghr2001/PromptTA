@@ -66,12 +66,12 @@ class MY_OfficeHome(DatasetBase):
 
         for domain, dname in enumerate(input_domains):
             if split == "all":
-                train_dir = osp.join(dataset_dir, 'images', dname, "train")
+                train_dir = osp.join(dataset_dir, dname, "train")
                 impath_label_list = _load_data_from_directory(train_dir)
-                val_dir = osp.join(dataset_dir, 'images', dname, "val")
+                val_dir = osp.join(dataset_dir, dname, "val")
                 impath_label_list += _load_data_from_directory(val_dir)
             else:
-                split_dir = osp.join(dataset_dir, 'images', dname, split)
+                split_dir = osp.join(dataset_dir, dname, split)
                 impath_label_list = _load_data_from_directory(split_dir)
 
             for impath, label in impath_label_list:
