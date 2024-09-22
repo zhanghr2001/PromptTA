@@ -181,11 +181,6 @@ def main(args):
         trainer.load_model(args.model_dir, epoch=args.epoch)
         trainer.test()
         return
-    
-    if args.tSNE:
-        trainer.load_model(args.model_dir, epoch=args.epoch)
-        trainer.test_tsne()
-        return
 
     if not args.no_train:
         trainer.train()
@@ -218,8 +213,6 @@ if __name__ == "__main__":
     parser.add_argument("--gpu", type=str, default="0", help="which gpu to use")
     parser.add_argument("--save", type=str, default=False, help="need to save model")
     parser.add_argument("opts", default=None, nargs=argparse.REMAINDER, help="modify config options using the command-line")
-
-    parser.add_argument("--tSNE", action="store_true", help="t-SNE visualization")
 
     args = parser.parse_args()
     

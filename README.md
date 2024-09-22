@@ -4,9 +4,8 @@
 <!-- [arXiv](https://arxiv.org/abs/2312.09553v2) -->
 
 
-Authors: Haoran Zhang*, [Shuanghao Bai*](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
+Authors: Haoran Zhang, [Shuanghao Bai](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
 
-*\*equal contribution*
 
 ## Highlights
 
@@ -58,17 +57,17 @@ cd Dassl.pytorch
 # Install dependencies
 pip install -r requirements.txt
 
-# Install this library (no need to re-build if the source code is modified)
+# Install dassl library (no need to re-build if the source code is modified)
 python setup.py develop
 cd ..
 ```
 
-* Install CLIP library.
+* Install clip library.
 ```bash
 # Dependencies, may have been installed in former steps
 pip install ftfy regex tqdm
 
-# Install CLIP library from git
+# Install clip library from git
 pip install git+https://github.com/openai/CLIP.git
 ```
 
@@ -92,14 +91,12 @@ Datasets list:
 
 
 ## Training and Evaluation
-Please follow the instructions for training, evaluating, and reproducing the results.
+Train and evaluate by running [scripts](scripts/), folder names represent methods.
 
 ```bash
 # Example: train and evaluate on PACS dataset, with backbone ResNet-50 and GPU 0
 bash scripts/prompt_ta/main_ta_all.sh pacs b128_ep50_pacs RN50 0
 ```
-
-The details are in each method folder in [scripts folder](scripts/).
 
 
 <!-- ## Citation
