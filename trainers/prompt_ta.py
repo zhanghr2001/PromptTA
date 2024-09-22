@@ -86,7 +86,8 @@ class PromptLearner(Base_PromptLearner):
         
         return [f"a {s[0]} photo of a {t[0]}" for t,s in text_all]
     
-    def forward(self, index=None, style=False, ctx_vectors=None):   # wrap prompt with style word vectors and prefix suffix
+    # synthesize prompt with style word vectors and prefix suffix
+    def forward(self, index=None, style=False, ctx_vectors=None):
         if ctx_vectors == None:
             ctx = self.ctx_vectors
         else:
@@ -139,6 +140,13 @@ class CustomCLIP(Base_CustomCLIP):
         output = image_features
 
         return output
+
+    def text_forward(self, input, tokenized_input):     # text encoder inference
+        text_features = self.text_encoder(input, tokenized_input)
+        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+        output = text_features
+
+        return output
     
     def style_generation(self, i):  # i-th style prompt
         if i == 0:
@@ -179,12 +187,6 @@ class CustomCLIP(Base_CustomCLIP):
 
         return L_style, L_content
 
-    def text_forward(self, input, tokenized_input):     # text encoder inference
-        text_features = self.text_encoder(input, tokenized_input)
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-        output = text_features
-
-        return output
 
 @TRAINER_REGISTRY.register()
 class PROMPT_TA(Base_SFDG):

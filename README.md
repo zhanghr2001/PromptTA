@@ -8,6 +8,7 @@ Authors: Haoran Zhang, [Shuanghao Bai](https://baishuanghao.github.io/), [Wanqi 
 
 
 This repo contains implementation of several soure-free domain generalization methods: zero-shot CLIP, [PromptStyler](https://arxiv.org/abs/2307.15199), PromptTA (Ours)
+
 Supported datasets: PACS, VLCS, OfficeHome, DomainNet
 
 ## Highlights
@@ -90,10 +91,10 @@ Download datasets:
 - [VLCS](https://drive.google.com/file/d/1r0WL5DDqKfSPp9E3tRENwHaXNs1olLZd/view)
 - [OfficeHome](https://drive.google.com/file/d/1gkbf_KaxoBws-GWT3XIPZ7BnkqbAxIFa/view)
 - [DomainNet (VisDA 2019)](http://ai.bu.edu/DomainNet/)
- 
-For PACS, VLCS and OfficeHome, unzip with the original folder name (pacs, VLCS, office_home_dg). For DomainNet, download  folder as follows or you can modify the configuration in [datasets](datasets/) to fit your own file structure.
+
+For PACS, VLCS and OfficeHome, unzip the files with the original folder names (pacs, VLCS, office_home_dg). For DomainNet, put the extracted image folders and train/test splits in the following structure or you can modify the configuration in [datasets](datasets/) to fit your own file structure.
 ```
-root
+your_directory
 ├─domainnet
 │  ├─images
 │  │  ├─clipart

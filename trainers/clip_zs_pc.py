@@ -1,3 +1,7 @@
+"""
+zero-shot CLIP with prompt "a photo of a class", differs clip_zs_c.py in line 27, 28
+"""
+
 from torch.cuda.amp import GradScaler
 
 from dassl.engine import TRAINER_REGISTRY
@@ -39,9 +43,6 @@ class CustomCLIP(Base_CustomCLIP):
 
 @TRAINER_REGISTRY.register()
 class CLIP_ZS_PC(Base_SFDG):
-    """
-    ZS: Zero-Shot CLIP
-    """  
     def build_model(self):
         cfg = self.cfg
         classnames = self.dm.dataset.classnames
@@ -50,7 +51,7 @@ class CLIP_ZS_PC(Base_SFDG):
         print(f"Loading CLIP (backbone: {cfg.MODEL.BACKBONE.NAME})")
         clip_model = load_clip_to_cpu(cfg)
 
-        if cfg.TRAINER.CLIP.PREC == "fp32" or cfg.TRAINER.CLIP.PREC == "amp":
+        if cfg.TRAINER.CLIP.PREC == "fp32":
             clip_model.float()  # CLIP's default precision is fp16
 
         print("Building custom CLIP...")

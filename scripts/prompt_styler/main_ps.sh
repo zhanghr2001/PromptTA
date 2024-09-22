@@ -12,9 +12,9 @@ BACKBONE=$2     # backbone name
 DOMAIN=$3
 GPU=$4
 
-# bash scripts/prompt_styler/main_ps.sh domainnet RN50
+# bash scripts/prompt_styler/main_ps.sh domainnet RN50 c 0
 
-# bash scripts/prompt_styler/main_ps.sh domainnet ViT-B/16
+# bash scripts/prompt_styler/main_ps.sh domainnet ViT-B/16 c 0
 
 if [ "$DATASET" = "pacs" ]; then
   ALL_DOMAIN=('a' 'c' 'p' 's')

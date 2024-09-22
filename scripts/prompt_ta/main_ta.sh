@@ -12,17 +12,9 @@ BACKBONE=$2     # backbone name
 DOMAIN=$3
 GPU=$4
 
-# modify CFG to test dataset
+# bash scripts/prompt_ta/main_ta.sh domainnet RN50 c 0
 
-# bash scripts/prompt_ta/main_ta.sh pacs RN50 a 0
-# bash scripts/prompt_ta/main_ta.sh vlcs RN50 c 1
-# bash scripts/prompt_ta/main_ta.sh office_home RN50 a 3
-# bash scripts/prompt_ta/main_ta.sh domainnet RN50
-
-# bash scripts/prompt_ta/main_ta.sh pacs ViT-B/16 a 0
-# bash scripts/prompt_ta/main_ta.sh vlcs ViT-B/16 c 2
-# bash scripts/prompt_ta/main_ta.sh office_home ViT-B/16 a 4
-# bash scripts/prompt_ta/main_ta.sh domainnet ViT-B/16
+# bash scripts/prompt_ta/main_ta.sh domainnet ViT-B/16 c 0
 
 if [ "$DATASET" = "pacs" ]; then
   ALL_DOMAIN=('a' 'c' 'p' 's')
