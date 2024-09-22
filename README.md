@@ -7,9 +7,8 @@
 Authors: Haoran Zhang, [Shuanghao Bai](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
 
 
-This repo contains implementation of several soure-free domain generalization methods: zero-shot CLIP, [PromptStyler](https://arxiv.org/abs/2307.15199), PromptTA (Ours)
+This repo contains implementation of several soure-free domain generalization methods: zero-shot [CLIP](https://proceedings.mlr.press/v139/radford21a), [PromptStyler](https://arxiv.org/abs/2307.15199), PromptTA (Ours)
 
-Supported datasets: PACS, VLCS, OfficeHome, DomainNet
 
 ## Highlights
 
