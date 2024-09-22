@@ -12,8 +12,7 @@ from utils.clip_part import *
 from torch.utils.data import *
 
 import numpy as np
-from openTSNE import TSNE
-from utils import tSNE_utils as utils
+
 
 class PromptLearner(Base_PromptLearner):
     def __init__(self, cfg, classnames, clip_model):
@@ -87,7 +86,7 @@ class PromptLearner(Base_PromptLearner):
         
         return [f"a {s[0]} photo of a {t[0]}" for t,s in text_all]
     
-    def forward(self, index=None, style=False, ctx_vectors=None):       #
+    def forward(self, index=None, style=False, ctx_vectors=None):   # wrap prompt with style word vectors and prefix suffix
         if ctx_vectors == None:
             ctx = self.ctx_vectors
         else:
