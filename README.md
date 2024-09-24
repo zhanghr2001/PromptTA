@@ -1,13 +1,13 @@
 # PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization
 
 
-<!-- [arXiv](https://arxiv.org/abs/2312.09553v2) -->
+[![arXiv](https://img.shields.io/badge/arXiv-2409.14163-b31b1b.svg)](https://arxiv.org/abs/2409.14163)
 
 
 Authors: Haoran Zhang, [Shuanghao Bai](https://baishuanghao.github.io/), [Wanqi Zhou](https://scholar.google.com/citations?user=3Q_3PR8AAAAJ&hl=zh-CN), [Jingwen Fu](https://scholar.google.com/citations?hl=zh-CN&user=2Cu9uMUAAAAJ), [Badong Chen](https://scholar.google.com/citations?user=mq6tPX4AAAAJ&hl=zh-CN&oi=ao).
 
 
-This repo contains implementation of several soure-free domain generalization methods: zero-shot [CLIP](https://proceedings.mlr.press/v139/radford21a), [PromptStyler](https://arxiv.org/abs/2307.15199), PromptTA (Ours)
+This repo contains implementation of several soure-free domain generalization methods: zero-shot CLIP, [PromptStyler](https://arxiv.org/abs/2307.15199), [PromptTA (Ours)](https://arxiv.org/abs/2409.14163)
 
 
 ## Highlights
@@ -117,19 +117,19 @@ bash scripts/prompt_ta/main_ta_all.sh pacs b128_ep50_pacs RN50 0
 ```
 
 
-<!-- ## Citation
+## Citation
 If our code is helpful to your research or projects, please consider citing:
 ```bibtex
-@inproceedings{bai2024prompt,
-  title={Prompt-based distribution alignment for unsupervised domain adaptation},
-  author={Bai, Shuanghao and Zhang, Min and Zhou, Wanqi and Huang, Siteng and Luan, Zhirong and Wang, Donglin and Chen, Badong},
-  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume={38},
-  number={2},
-  pages={729--737},
-  year={2024}
+@misc{zhang2024prompttapromptdriventextadapter,
+      title={PromptTA: Prompt-driven Text Adapter for Source-free Domain Generalization}, 
+      author={Haoran Zhang and Shuanghao Bai and Wanqi Zhou and Jingwen Fu and Badong Chen},
+      year={2024},
+      eprint={2409.14163},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2409.14163}, 
 }
-``` -->
+```
 
 
 ## Acknowledgements
